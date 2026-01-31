@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import './App.css';
-import { commentsApi } from './shared/api/jsonPlaceholder.api';
 import { rickAndMortyApi } from './shared/api/rickAndMorty.api';
 
 function App() {

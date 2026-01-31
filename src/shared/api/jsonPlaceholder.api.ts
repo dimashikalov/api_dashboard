@@ -2,7 +2,7 @@ import { apiClient } from './apiClient';
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
-export interface Comment {
+export interface ApiComment {
   id?: number;
   postId: number;
   name: string;
@@ -10,23 +10,25 @@ export interface Comment {
 }
 
 export const commentsApi = {
-  getAll() {
-    return apiClient<Comment[]>(`${BASE_URL}/comments`);
+  getAll(signal?: AbortSignal) {
+    return apiClient<ApiComment[]>(`${BASE_URL}/comments`, {
+      signal,
+    });
   },
 
   getByPostId(postId: number) {
-    return apiClient<Comment[]>(`${BASE_URL}/comments?postId=${postId}`);
+    return apiClient<ApiComment[]>(`${BASE_URL}/comments?postId=${postId}`);
   },
 
-  create(comment: Comment) {
-    return apiClient<Comment>(`${BASE_URL}/comments`, {
+  create(comment: ApiComment) {
+    return apiClient<ApiComment>(`${BASE_URL}/comments`, {
       method: 'POST',
       body: comment,
     });
   },
 
-  update(id: number, comment: Partial<Comment>) {
-    return apiClient<Comment>(`${BASE_URL}/comments/${id}`, {
+  update(id: number, comment: Partial<ApiComment>) {
+    return apiClient<ApiComment>(`${BASE_URL}/comments/${id}`, {
       method: 'PATCH',
       body: comment,
     });
