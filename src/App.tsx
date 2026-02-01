@@ -3,6 +3,7 @@ import './App.css';
 import { rickAndMortyApi } from './shared/api/rickAndMorty.api';
 
 function App() {
+  console.log('app page');
   useEffect(() => {
     const controller = new AbortController();
 

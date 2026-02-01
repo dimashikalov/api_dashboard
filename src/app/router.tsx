@@ -5,10 +5,10 @@ import App from '../App';
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    Component: App,
   },
   {
-    path: '/comments',
-    element: <CommentsPage />,
+    path: 'comments',
+    Component: CommentsPage,
   },
 ]);

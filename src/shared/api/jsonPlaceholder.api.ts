@@ -3,11 +3,13 @@ import { apiClient } from './apiClient';
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
 export interface ApiComment {
-  id?: number;
+  id: number;
   postId: number;
   name: string;
   body: string;
 }
+
+export type CreateCommentDto = Omit<ApiComment, 'id'>;
 
 export const commentsApi = {
   getAll(signal?: AbortSignal) {
@@ -20,7 +22,7 @@ export const commentsApi = {
     return apiClient<ApiComment[]>(`${BASE_URL}/comments?postId=${postId}`);
   },
 
-  create(comment: ApiComment) {
+  create(comment: CreateCommentDto) {
     return apiClient<ApiComment>(`${BASE_URL}/comments`, {
       method: 'POST',
       body: comment,
