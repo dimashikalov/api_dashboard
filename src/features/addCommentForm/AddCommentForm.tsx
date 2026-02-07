@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './styles.css';
-import type { CreateCommentDto } from '../../shared/api/jsonPlaceholder.api';
+import type { CreateCommentDto } from '@/shared/api/jsonPlaceholder.api';
 
 interface Props {
   onSubmit: (data: CreateCommentDto) => void;
